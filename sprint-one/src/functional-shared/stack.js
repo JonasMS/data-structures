@@ -4,16 +4,16 @@ var Stack = function() {
 
   //create methods: size, pop, and push within Stack object
 
-  var instance = {};
+  var instance = {
+    length: 0,
+    storage: {}
+  };
 
   _.extend(instance, stackMethods);
   return instance;
 };
 
-var stackMethods = {
-  length: 0,
-  storage: {}
-};
+var stackMethods = {};
 
 stackMethods.push = function(value) {
   this.storage[this.length] = value;
