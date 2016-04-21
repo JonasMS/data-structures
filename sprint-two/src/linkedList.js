@@ -4,43 +4,58 @@ var LinkedList = function() {
   list.tail = null;
 
   list.addToTail = function(value) {
-    // list.tail = new Node(value);
-
-    var newNode = new Node(value);
-
-    if( list.tail ){
-      list.tail.next = newNode;
+   //create a new instance of node
+    var instance = new Node(value);
+    
+    if ( !list.tail ) {
+      list.head = instance;
+      list.tail = instance;
     } else {
-      list.head = newNode;
+      list.tail.next = instance;
+      list.tail = list.tail.next;
     }
-    list.tail = newNode;
 
   };
 
   list.removeHead = function() {
-    var headValue = list.head.value;
-    list.head = list.head.next;
-    return headValue;
+    if (list.head) {
+      var head = list.head.value;
+      list.head = list.head.next;
+    }
+    return head;
+
 
   };
 
   list.contains = function(target) {
-    // var start = list.head;
+    //if node.value === target 
+      //return true;
+    //else
+      //check to see if next value in node has a value
+        //list.contains of next value
 
-    var search = function(node, val) {
-      if ( node.value === val ){
+    var recurse = function(node) {
+      
+      if (node.value === target) {
         return true;
-      } else if (node.next) {
-        return search(node.next, val)
+      } else if (!!node.next) {
+        return recurse(node.next);
       } else {
         return false;
       }
     };
-    return search(list.head, target);
+
+    return recurse(list.head);
+
   };
+
+    
   return list;
+
+
 };
 
+  
 var Node = function(value) {
   var node = {};
 
@@ -49,6 +64,8 @@ var Node = function(value) {
 
   return node;
 };
+
+
 
 /*
  * Complexity: What is the time complexity of the above functions?

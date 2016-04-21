@@ -1,9 +1,9 @@
 var Tree = function(value) {
-  var newTree = {};
+  var newTree = Object.create(treeMethods);
   newTree.value = value;
+  newTree.children = [];  
 
-  // your code here
-  newTree.children = null;  // fix me
+
 
   return newTree;
 };
@@ -11,9 +11,24 @@ var Tree = function(value) {
 var treeMethods = {};
 
 treeMethods.addChild = function(value) {
+  this.children.push(new Tree(value));
 };
 
 treeMethods.contains = function(target) {
+
+  var recurse = function(parent) {  
+    if (parent.value === target) {
+      return true;
+    } 
+    for (var i = 0; i < parent.children.length; i++) {
+      if ( recurse(parent.children[i]) ) {
+        return true;
+      }
+    }
+    return false;
+  };
+
+  return recurse(this);
 };
 
 
