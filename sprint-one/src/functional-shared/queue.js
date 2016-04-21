@@ -16,7 +16,7 @@ var Queue = function() {
 var queueMethods = {
   size: function() {
     return this.length;
-  }, 
+  },
   enqueue: function(val) {
     (this.storage)[this.length] = val;
     this.length++;
@@ -26,7 +26,7 @@ var queueMethods = {
       this.length--;
       return this.remove();
     }
-  }, 
+  },
   remove: function() {
     var removed = this.storage[0];
     for (var i = 0; i < this.length; i++) {
@@ -43,5 +43,4 @@ var queueMethods = {
 
 var arr = new Queue;
 
-[ 1, 2, 3, 3];
 
