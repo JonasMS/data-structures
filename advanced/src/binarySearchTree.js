@@ -4,7 +4,7 @@ var BinarySearchTree = function(value) {
   node.value = value;
   node.left = null;
   node.right = null;
-
+  node.height = null;
 
   return node;
 };
@@ -44,9 +44,62 @@ binaryTreeMethods.traverse = function (func) {
     this.right.traverse(func);
   }
 
-binaryTreeMethods.breadthFirstLog = function(arr) {
+binaryTreeMethods.breadthFirstLog = function() {
+
+
+  //while the children array has elements
+
+  //nodes array = children array
+  //reset children array
+
+  //for every node in nodes array
+    //IF there is a left node
+      //get left node value
+      //get left node's children
+    //IF there is a right node
+      //get right node value
+      //get right node's children
+
+
+    console.log(this.value);
+
+    var children = [this.left, this.right];
+    var nodes;
+
+    while( children.length ) {
+      for (var j = 0; j < children.length; j++) {
+        console.log(children[j].value);
+      }
+
+      nodes = children.slice();
+      children = [];
+
+      //iterate over each node
+      for (var i = 0; i < nodes.length; i++) {
+        if ( !!nodes[i].left ) {
+          children.push((nodes[i]).left);
+        }
+        if ( !!nodes[i].right ) {
+          children.push((nodes[i]).right);
+        }
+      }
+    }
+
+
+
 
   //traverse array
+    //is current node's height === the current breadth's height?
+      //True:
+        //get node's value
+        //go to neighbor
+      //False:
+        //current node's height > the current breadth's height?
+          //go back up
+        //current node's height < the current breadth's height?
+          //keep going, recursion
+
+
     //get this.left.value
     //get this.right.value
 
@@ -57,7 +110,6 @@ binaryTreeMethods.breadthFirstLog = function(arr) {
 
     //on each node push the value into arr
 
-  return arr;
 
 };
 
