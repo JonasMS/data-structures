@@ -39,8 +39,6 @@ describe('binarySearchTree', function() {
 
   it('should log the nodes contained in the tree using a breadth-first approach use "breadthFirstLog"', function() {
 
-    var array = [];
-
     binarySearchTree.insert(2);
     binarySearchTree.insert(8);
     binarySearchTree.insert(4);
@@ -48,7 +46,8 @@ describe('binarySearchTree', function() {
     binarySearchTree.insert(3);
     binarySearchTree.insert(7);
     binarySearchTree.insert(9);
-    binarySearchTree.breadthFirstLog(array).to.equal([5, 2, 8, 1, 3, 7, 9, 4]);
+    binarySearchTree.breadthFirstLog();
+
   });
 
 });
