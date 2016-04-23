@@ -28,24 +28,30 @@ var LinkedList = function() {
   };
 
   list.contains = function(target) {
-    //if node.value === target
-      //return true;
-    //else
-      //check to see if next value in node has a value
-        //list.contains of next value
+    var node = list.head;
 
-    var recurse = function(node) {
-
-      if (node.value === target) {
+    while( !!node ) {
+      if ( node.value === target ) {
         return true;
-      } else if (!!node.next) {
-        return recurse(node.next);
-      } else {
-        return false;
       }
-    };
 
-    return recurse(list.head);
+      node = node.next;
+    }
+
+    return false;
+
+    // var recurse = function(node) {
+
+    //   if (node.value === target) {
+    //     return true;
+    //   } else if (!!node.next) {
+    //     return recurse(node.next);
+    //   } else {
+    //     return false;
+    //   }
+    // };
+
+    // return recurse(list.head);
 
   };
 
