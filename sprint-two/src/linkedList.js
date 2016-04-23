@@ -34,33 +34,14 @@ var LinkedList = function() {
       if ( node.value === target ) {
         return true;
       }
-
       node = node.next;
     }
 
     return false;
-
-    // var recurse = function(node) {
-
-    //   if (node.value === target) {
-    //     return true;
-    //   } else if (!!node.next) {
-    //     return recurse(node.next);
-    //   } else {
-    //     return false;
-    //   }
-    // };
-
-    // return recurse(list.head);
-
   };
 
-
   return list;
-
-
 };
-
 
 var Node = function(value) {
   var node = {};
