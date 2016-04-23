@@ -32,17 +32,34 @@ binaryTreeMethods.contains = function (target) {
   }
 };
 
-binaryTreeMethods.depthFirstLog = function (func) {
+binaryTreeMethods.traverse = function (func) {
   //apply func to this.value
   func(this.value);
   //traverse children
   if ( !!this.left ) {
-    this.left.depthFirstLog(func);
+    this.left.traverse(func);
   }
 
   if ( !!this.right ) {
-    this.right.depthFirstLog(func);
+    this.right.traverse(func);
   }
+
+binaryTreeMethods.breadthFirstLog = function(arr) {
+
+  //traverse array
+    //get this.left.value
+    //get this.right.value
+
+    //dive into this.left
+    //dive into this.right
+
+    //use node.height?
+
+    //on each node push the value into arr
+
+  return arr;
+
+};
 
 };
 

@@ -3,10 +3,8 @@
 // ------------------------
 // Instantiate a new graph
 var Graph = function() {
-
+  this.storage = [];
 };
-
-Graph.prototype.storage = [];
 
 // ------------------------
 // Add a node to the graph, passing in the node's value.
@@ -14,7 +12,6 @@ Graph.prototype.addNode = function(val) {
   var newNode = new ANode;
   newNode.value = val;
   this.storage.push(newNode);
-
 };
 
 // ------------------------
@@ -60,7 +57,7 @@ Graph.prototype.hasEdge = function(startVal, endVal) {
   var node1 = this.storage[this.searchForNode(this.storage, startVal)];
   var node2 = this.storage[this.searchForNode(this.storage, endVal)];
 
-  return ( node1.contains(endVal) || node2.contains(startVal) );
+  return ( node1.contains(endVal) && node2.contains(startVal) );
 
 
   // return node2 in node1.nodes || node1 in node2.nodes;
@@ -77,6 +74,7 @@ Graph.prototype.addEdge = function(startVal, endVal) {
   var node2 = this.storage[this.searchForNode(this.storage, endVal)];
 
   node1.nodes.push(node2);
+  node2.nodes.push(node1);
 };
 
 // ------------------------
@@ -107,11 +105,14 @@ Graph.prototype.forEachNode = function(cb) {
 
 var ANode = function() {
 
+  this.value = null;
+  this.nodes = [];
+
 };
 
-ANode.prototype.value = null;
+// ANode.prototype.value = null;
 
-ANode.prototype.nodes = [];
+// ANode.prototype.nodes = [];
 
 ANode.prototype.contains = function(target) {
   return this.searchForNode(this.nodes, target) > -1;
