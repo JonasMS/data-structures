@@ -1,20 +1,22 @@
 var LinkedList = function() {
+
   var list = {};
   list.head = null;
   list.tail = null;
 
   list.addToTail = function(value) {
    //create a new instance of node
-    var instance = new Node(value);
-    
+    var node = new Node(value);
+
+    // debugger;
+
     if ( !list.tail ) {
-      list.head = instance;
-      list.tail = instance;
+      list.head = node;
+      list.tail = node;
     } else {
-      list.tail.next = instance;
+      list.tail.next = node;
       list.tail = list.tail.next;
     }
-
   };
 
   list.removeHead = function() {
@@ -23,19 +25,17 @@ var LinkedList = function() {
       list.head = list.head.next;
     }
     return head;
-
-
   };
 
   list.contains = function(target) {
-    //if node.value === target 
+    //if node.value === target
       //return true;
     //else
       //check to see if next value in node has a value
         //list.contains of next value
 
     var recurse = function(node) {
-      
+
       if (node.value === target) {
         return true;
       } else if (!!node.next) {
@@ -49,13 +49,13 @@ var LinkedList = function() {
 
   };
 
-    
+
   return list;
 
 
 };
 
-  
+
 var Node = function(value) {
   var node = {};
 
@@ -71,5 +71,5 @@ var Node = function(value) {
  * Complexity: What is the time complexity of the above functions?
  addTail: constant
  removeHead: constant
- contains: linear 
+ contains: linear
  */

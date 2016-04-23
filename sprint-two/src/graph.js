@@ -11,7 +11,7 @@ Graph.prototype.storage = [];
 // ------------------------
 // Add a node to the graph, passing in the node's value.
 Graph.prototype.addNode = function(val) {
-  var newNode = new Node;
+  var newNode = new ANode;
   newNode.value = val;
   this.storage.push(newNode);
 
@@ -29,7 +29,7 @@ Graph.prototype.removeNode = function(target) {
   var index = this.searchForNode(this.storage, target);
   if ( index > -1 ) {
     this.storage = this.deleteNode(this.storage, index);
-  } 
+  }
 };
 
 Graph.prototype.deleteNode = function(arr, idx) {
@@ -82,8 +82,8 @@ Graph.prototype.addEdge = function(startVal, endVal) {
 // ------------------------
 // Remove an edge between any two specified (by value) nodes.
 Graph.prototype.removeEdge = function(startVal, endVal) {
-  //go into node1 array, 
-    //find node2 
+  //go into node1 array,
+    //find node2
     //move everything over one
     //pop
   var index = this.searchForNode(this.storage, startVal);
@@ -105,19 +105,19 @@ Graph.prototype.forEachNode = function(cb) {
 
 
 
-var Node = function() {
+var ANode = function() {
 
 };
 
-Node.prototype.value = null;
+ANode.prototype.value = null;
 
-Node.prototype.nodes = [];
+ANode.prototype.nodes = [];
 
-Node.prototype.contains = function(target) {
+ANode.prototype.contains = function(target) {
   return this.searchForNode(this.nodes, target) > -1;
 };
 
-Node.prototype.searchForNode = function(arr, target) {
+ANode.prototype.searchForNode = function(arr, target) {
   for (var i = 0; i < arr.length; i++) {
     if ( arr[i].value === target ) {
       return i;
@@ -127,7 +127,7 @@ Node.prototype.searchForNode = function(arr, target) {
   return -1;
 };
 
-Node.prototype.deleteNode = function(arr, idx) {
+ANode.prototype.deleteNode = function(arr, idx) {
   var copy = arr.slice();
   for (var i = idx; i < copy.length - 1; i++) {
     copy[i] = copy[i + 1];
