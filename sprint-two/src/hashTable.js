@@ -67,16 +67,16 @@ HashTable.prototype.getPairIdx = function(k, index) {
       }
     }
   }
-  return false; 
+  return false;
 
 };
 
 HashTable.prototype.resize = function() {
   var limit = this._limit;
-  if ( this._tupleCount > this._limit * .75) { 
+  if ( this._tupleCount > this._limit * .75) {
     this._limit *= 2;
     this.rehash(limit);
-  } else if ( this._tupleCount < this._limit * .25) { 
+  } else if ( this._tupleCount < this._limit * .25) {
     this._limit /= 2;
     this.rehash(limit);
   }
@@ -85,10 +85,16 @@ HashTable.prototype.resize = function() {
 HashTable.prototype.rehash = function(limit) {
   //iterate over each tuple
   var bucket, temp;
+
+  // debugger;
+
+  //iterate over each bucket in storage
   for (var i = 0; i < limit; i++) {
     bucket = this._storage.get(i);
     if ( bucket !== undefined && bucket.length ) {
-      for (var j = 0; j < bucket.length; j++) { 
+
+      //iterate over each tuple in bucket
+      for (var j = 0; j < bucket.length; j++) {
         //placeholder for tuple
         temp = bucket[j];
         //remove tuple from original bucket
